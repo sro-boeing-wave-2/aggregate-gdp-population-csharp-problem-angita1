@@ -12,7 +12,7 @@ namespace AggregateGDPPopulation.Tests
       async  public void Test1()
         {
             await Class1.AggregateAsync();   
-            string expected = @"../../../../AggregateGDPPopulation.Tests/expected-output.json";
+           string expected = @"../../../../AggregateGDPPopulation.Tests/expected-output.json";
             string output = @"../../../../AggregateGDPPopulation/output/output.json";
             //string actualOutput = streamReader1.ReadToEnd();
             //string expectedOutput = streamReader2.ReadToEnd();
@@ -21,7 +21,7 @@ namespace AggregateGDPPopulation.Tests
             string task1Data = await task1Actual;
             Task<string> actualOutput = Class1.ReadDataAsync(output);
             string task2Data = await actualOutput;
-            Assert.Equal(task2Data, task1Data);
+            Assert.Equal(task1Data, task2Data);
 
 
         }

@@ -38,8 +38,9 @@ namespace AggregateGDPPopulation
             string outputpath = @"../../../../AggregateGDPPopulation/output/output.json";
             Task<string> dataTask = ReadDataAsync(filepath); // since the return type is a task which contains the string  
             Task<string> maptask = ReadDataAsync(mapperfile);
-            string data = await dataTask;
-            string mapdata = await maptask;
+            await Task.WhenAll(dataTask, maptask);
+            string data = dataTask.Result;
+            string mapdata =maptask.Result;
             string[] csvLines = data.Split('\n');
             string[] headers = csvLines[0].Replace("\"", "").Split(',');
             var values = JsonConvert.DeserializeObject<Dictionary<string, string>>(mapdata);
