@@ -11,15 +11,15 @@ namespace AggregateGDPPopulation.Tests
         [Fact]
       async  public void Test1()
         {
-            await Class1.AggregateAsync();   
-           string expected = @"../../../../AggregateGDPPopulation.Tests/expected-output.json";
+            await AggregateClass.AggregateAsync();   
+            string expected = @"../../../../AggregateGDPPopulation.Tests/expected-output.json";
             string output = @"../../../../AggregateGDPPopulation/output/output.json";
             //string actualOutput = streamReader1.ReadToEnd();
             //string expectedOutput = streamReader2.ReadToEnd();
             //Assert.Equal(actualOutput, expectedOutput);
-            Task<string> task1Actual = Class1.ReadDataAsync(expected);
+            Task<string> task1Actual = ReadWrite.ReadDataAsync(expected);
             string task1Data = await task1Actual;
-            Task<string> actualOutput = Class1.ReadDataAsync(output);
+            Task<string> actualOutput = ReadWrite.ReadDataAsync(output);
             string task2Data = await actualOutput;
             Assert.Equal(task1Data, task2Data);
 
